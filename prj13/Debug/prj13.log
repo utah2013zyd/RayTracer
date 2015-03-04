@@ -1,0 +1,89 @@
+﻿Build started 3/4/2015 1:28:15 PM.
+     1>Project "X:\cs6620\prj14\prj13\prj13.vcxproj" on node 2 (Rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (prj13.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt lights.cpp main.cpp materials.cpp Math.cpp object.cpp PhotonGenerator.cpp photonmap.cpp Renderer.cpp texture.cpp tinyxml\tinystr.cpp tinyxml\tinyxml.cpp tinyxml\tinyxmlerror.cpp tinyxml\tinyxmlparser.cpp Tracer.cpp viewport.cpp xmlload.cpp
+         xmlload.cpp
+         viewport.cpp
+     1>x:\cs6620\prj14\prj13\viewport.cpp(13): warning C4068: unknown pragma
+         Tracer.cpp
+         tinyxmlparser.cpp
+         tinyxmlerror.cpp
+         tinyxml.cpp
+         tinystr.cpp
+         texture.cpp
+         Renderer.cpp
+     1>x:\cs6620\prj14\prj13\renderer.cpp(15): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>x:\cs6620\prj14\prj13\renderer.cpp(40): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\renderer.cpp(90): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\renderer.cpp(130): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\renderer.cpp(142): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\renderer.cpp(144): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\renderer.cpp(88): warning C4101: 'camRandomY' : unreferenced local variable
+     1>x:\cs6620\prj14\prj13\renderer.cpp(88): warning C4101: 'camRandomX' : unreferenced local variable
+         photonmap.cpp
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(54): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(55): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(56): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(57): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(518): warning C4244: 'initializing' : conversion from 'double' to 'const float', possible loss of data
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(553): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>x:\cs6620\prj14\prj13\photonmap.cpp(580): warning C4244: 'initializing' : conversion from 'double' to 'const float', possible loss of data
+         PhotonGenerator.cpp
+     1>x:\cs6620\prj14\prj13\photongenerator.cpp(9): warning C4018: '<' : signed/unsigned mismatch
+     1>x:\cs6620\prj14\prj13\photongenerator.cpp(27): warning C4018: '<' : signed/unsigned mismatch
+     1>x:\cs6620\prj14\prj13\photongenerator.cpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>x:\cs6620\prj14\prj13\photongenerator.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         object.cpp
+     1>x:\cs6620\prj14\prj13\object.cpp(57): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(65): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(73): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(78): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(88): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(89): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\object.cpp(199): warning C4018: '<' : signed/unsigned mismatch
+         Math.cpp
+     1>x:\cs6620\prj14\prj13\math.h(9): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+         materials.cpp
+     1>x:\cs6620\prj14\prj13\math.h(9): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(23): warning C4018: '<' : signed/unsigned mismatch
+     1>x:\cs6620\prj14\prj13\materials.cpp(74): warning C4018: '<' : signed/unsigned mismatch
+     1>x:\cs6620\prj14\prj13\materials.cpp(138): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(157): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(204): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(223): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(290): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(291): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(311): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\materials.cpp(356): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         main.cpp
+         lights.cpp
+     1>x:\cs6620\prj14\prj13\lights.cpp(35): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\lights.cpp(46): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\lights.cpp(53): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\lights.cpp(54): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>x:\cs6620\prj14\prj13\lights.cpp(81): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"X:\cs6620\prj14\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"X:\cs6620\prj14\Debug\RayTracer.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:\cs6620\prj14\Debug\RayTracer.lib" /MACHINE:X86 Debug\lights.obj
+         Debug\main.obj
+         Debug\materials.obj
+         Debug\Math.obj
+         Debug\object.obj
+         Debug\PhotonGenerator.obj
+         Debug\photonmap.obj
+         Debug\Renderer.obj
+         Debug\texture.obj
+         Debug\tinystr.obj
+         Debug\tinyxml.obj
+         Debug\tinyxmlerror.obj
+         Debug\tinyxmlparser.obj
+         Debug\Tracer.obj
+         Debug\viewport.obj
+         Debug\xmlload.obj
+         prj13.vcxproj -> X:\cs6620\prj14\Debug\RayTracer.exe
+     1>Done Building Project "X:\cs6620\prj14\prj13\prj13.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.16
