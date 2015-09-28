@@ -1,0 +1,139 @@
+
+
+<xml>
+  <scene>
+     
+    <!-- Objects -->
+
+ <object type="plane" name="groundPlane" material="ground">
+      <scale value="1000"/>
+    </object>
+	<!--
+    <object type="plane" name="wall" material="bricks">
+      <scale value="100"/>
+      <rotate angle="90" x="1"/>
+      <translate y="10"/>
+    </object>
+	-->
+
+    <object type="obj" name="teapot.obj" material="purple">
+      <scale value="0.5"/>
+	  <rotate angle="90" z="1"/>
+      <translate x="-6" y="6" z="0"/>
+    </object>
+
+    <object type="obj" name="teapot.obj" material="green">
+      <scale value="0.5"/>
+      <rotate angle="90" z="1"/>
+      <translate x="6" y="6" z="0"/>
+    </object>
+
+    <object type="obj" name="teapot.obj" material="blue">
+      <scale value="0.5"/>
+      <rotate angle="90" z="1"/>
+      <translate x="18" y="6" z="0"/>
+    </object>
+
+	<object type="obj" name="teapot.obj" material="red">
+      <scale value="0.5"/>
+	  <rotate angle="90" z="1"/>
+      <translate x="30" y="6" z="0"/>
+    </object>
+	
+	<object type="obj" name="ring.obj" material="ring">
+      <scale x="0.1" y="0.1" z="0.1"/>
+	  <rotate angle="90" x="1" />
+      <translate x="13" y="-13" z="0"/>
+    </object>
+	<object type="sphere" name="sphere1" material="mtl1">
+      <scale value="3"/>
+      <translate x="30" y="-5" z="3"/>
+    </object>
+    <!-- Materials -->
+    <material type="blinn" name="ground">
+      <diffuse texture="wood.ppm">
+        <scale value="0.02"/>
+      </diffuse>
+      <specular value="0"/>
+    </material>
+    <material type="blinn" name="bricks">
+      <diffuse texture="bricks.ppm">
+        <scale value="0.05"/>
+      </diffuse>
+      <specular value="0.3"/>
+      <glossiness value="10"/>
+    </material>
+    <material type="blinn" name="mtl1">
+        <diffuse  value="0"/>
+        <specular value="1.0"/>
+        <glossiness value="80"/>
+		<refraction value="1" index="1.52"/>
+    </material>
+    <material type="blinn" name="purple">
+      <diffuse  r="0.596" g="0.306" b="0.639" value="0.8"/>
+      <specular value="0.8"/>
+      <glossiness value="100"/>
+      <reflection value="0.2"/>
+    </material>
+    <material type="blinn" name="green">
+      <diffuse  r="0.302" g="0.686" b="0.29" value="0.6"/>
+      <specular value="0.8"/>
+      <glossiness value="100"/>
+      <reflection value="0.4"/>
+    </material>
+	<material type="blinn" name="blue">
+      <diffuse  r="0.216" g="0.494" b="0.722" value="0.4"/>
+      <specular value="0.8"/>
+      <glossiness value="100"/>
+      <reflection value="0.6"/>
+    </material>
+    <material type="blinn" name="red">
+      <diffuse  r="0.894" g="0.102" b="0.11" value="0.2"/>
+      <specular value="0.8"/>
+      <glossiness value="100"/>
+      <reflection value="0.8"/>
+    </material>
+	<material type="blinn" name="ring">
+      <diffuse r = "0.917" g="0.78" b="0.529" value="0.2"/>
+      <specular r="1.0" g="1.0" b="1.0" value="0.7"/>
+      <glossiness value="20"/>
+      <reflection value="1.0"/>
+
+    </material>
+ 
+    <!-- Lights -->
+    <light type="point" name="pointLight">
+      <intensity value="2000.5"/>
+      <!-- <position x="20" y="-13" z="15"/> -->
+      <position x="17" y="-13" z="5"/>
+	  <size value="5"/>
+	  <falloff value="27.5"/>
+    </light>
+	<light type="point" name="pointLight">
+      <intensity value="1000.5"/>
+      <!-- <position x="20" y="-13" z="15"/> -->
+      <position x="20" y="-13" z="15"/>
+	  <size value="5"/>
+	  <falloff value="2.5"/>
+    </light>
+	<light type="point" name="pointLight">
+      <intensity value="400.5"/>
+      <position x="5" y="30" z="30"/>
+      <size value="5"/>
+	  <falloff value="0.5"/>
+    </light>
+	<light type="indirect" name="indirectLight">
+		<intensity value="1.0"/>
+	</light>
+  </scene>
+ 
+  <camera>
+     <position x="65" y="-15" z="30"/>
+    <!-- <position x="30" y="-12" z="40"/> -->
+	<target x="6" y="0" z="-3"/>
+    <up x="0" y="0" z="1"/>
+    <fov value="40"/>
+    <width value="1280"/>
+    <height value="960"/>
+  </camera>
+</xml>
