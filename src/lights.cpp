@@ -32,8 +32,8 @@ Color PointLight::Illuminate(const Point3 &p, const Point3 &N) const
 	float opacity = 0;
 	for (int i = 0; i < (size == 0 ? 1 : SHADOW_SAMPLE); i++)
 	{
-		float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-		float length = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*size;
+		float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+		float length = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*size;
 
 		Point3 pos = position + x_circle*cos(theta)*length + y_circle*sin(theta)*length;
 
@@ -50,8 +50,8 @@ Ray PointLight::RandomPhoton() const
 {
 	float x1, x2;
 	do{
-		x1 = (static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1) - 0.5) * 2;
-		x2 = (static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1) - 0.5) * 2;
+		x1 = (static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1) - 0.5) * 2;
+		x2 = (static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1) - 0.5) * 2;
 	} while (x1*x1 + x2*x2 > 1);
 
 	Ray ray;
@@ -78,8 +78,8 @@ Color IndirectLight::Illuminate(const Point3 &p, const Point3 &N) const
 
 	for (int i = 0; i < INDIRECT_SAMPLE; i++)
 	{
-		float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-		float length = std::sqrt(static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1));
+		float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+		float length = std::sqrt(static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1));
 
 		Point3 randomPoint = Point3(length*cos(theta), length*sin(theta), sqrt(1 - length*length));
 		Ray sample;

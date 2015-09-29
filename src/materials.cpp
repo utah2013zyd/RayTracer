@@ -135,8 +135,8 @@ Color MtlBlinn::reflectShade(const Ray &ray, const HitInfo &hInfo, const LightLi
 	 	y_circle.Normalize();
 	 	for (int i = 0; i < (reflectionGlossiness <= 0 ? 1 : REFLECT_SAMPLE); i++)
 	 	{
-	 		float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-	 		float length = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*reflectionGlossiness;
+	 		float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+	 		float length = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*reflectionGlossiness;
 	 		
 	 		Ray reflect;
 	 		HitInfo reflectHit;
@@ -201,8 +201,8 @@ Color MtlBlinn::refractShade(const Ray &ray, const HitInfo &hInfo, const LightLi
 		y_circle.Normalize();
 		for (int i = 0; i < (refractionGlossiness <= 0 ? 1 : REFRACT_SAMPLE); i++)
 		{
-			float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-			float length = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*refractionGlossiness;
+			float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+			float length = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*refractionGlossiness;
 			Ray refract;
 			HitInfo refractHit;
 			refract.p = hInfo.p;
@@ -266,7 +266,7 @@ bool MtlBlinn::RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const
 	float Ps = max(reflection.GetColor().r, max(reflection.GetColor().g, reflection.GetColor().b));
 	float Pt = max(refraction.GetColor().r, max(refraction.GetColor().g, refraction.GetColor().b));
 	float Pa = max(0.0f, 1 - Pd - Ps - Pt);
-	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*(Pd + Ps + Pt + Pa);
+	float x = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*(Pd + Ps + Pt + Pa);
 	if (x < Pd)
 	{
 		//new color
@@ -285,8 +285,8 @@ bool MtlBlinn::RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const
 		bitan.Normalize();
 		//float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
 		//float length = std::sqrt(static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1));
-		float u1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1);
-		float u2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1);
+		float u1 = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1);
+		float u2 = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1);
 		float length = sqrt(1.0 - u1*u1);
 		float phi = 2 * M_PI*u2;
 
@@ -308,8 +308,8 @@ bool MtlBlinn::RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const
 		Point3 y_circle = x_circle.Cross(reflectDir);
 		y_circle.Normalize();
 
-		float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-		float length = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*reflectionGlossiness;
+		float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+		float length = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*reflectionGlossiness;
 
 		r.p = hInfo.p;
 		r.dir = reflectDir + x_circle*cos(theta)*length + y_circle*sin(theta)*length;
@@ -353,8 +353,8 @@ bool MtlBlinn::RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const
 			x_circle.Normalize();
 			Point3 y_circle = x_circle.Cross(refractDir);
 			y_circle.Normalize();
-			float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-			float length = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*refractionGlossiness;
+			float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+			float length = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*refractionGlossiness;
 
 			r.p = hInfo.p;
 			r.dir = refractDir + x_circle*cos(theta)*length + y_circle*sin(theta)*length;

@@ -74,7 +74,7 @@ void Renderer::renderPixel(Point3 S0, Point3 x, Point3 y, float h, float w)
 		Color sumColor = Color(0, 0, 0);
 		int sampleCount = 0;
 		//srand(time(NULL));
-		float shift = static_cast<float>(rand())/static_cast<float>(RAND_MAX+1);
+		float shift = static_cast<float>(rand())/(static_cast<float>(RAND_MAX)+1);
 		Color lastAverageColor = Color(0, 0, 0);
 		//std::cout << shift << std::endl;
 		while (sampleCount < maxSampleCount)
@@ -87,8 +87,8 @@ void Renderer::renderPixel(Point3 S0, Point3 x, Point3 y, float h, float w)
 				//generate random camera position
 				float camRandomX, camRandomY;
 				int index = sampleCount;
-				float theta = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*M_PI * 2;
-				float length = std::sqrt(static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*camera.dof);
+				float theta = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*M_PI * 2;
+				float length = std::sqrt(static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*camera.dof);
 				//do{
 				//	camRandomX = Halton(index, 3);
 				//	camRandomY = Halton(index, 2);

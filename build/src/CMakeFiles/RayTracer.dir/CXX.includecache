@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../src/../include/Math.h
+cyPoint.h
+../src/../include/cyPoint.h
+
 ../src/../include/PhotonGenerator.h
 photonmap.h
 ../src/../include/photonmap.h
@@ -30,8 +34,6 @@ mutex
 scene.h
 ../src/../include/scene.h
 
-../src/../include/cyBVH.h
-
 ../src/../include/cyColor.h
 
 ../src/../include/cyMatrix3.h
@@ -42,25 +44,9 @@ cyPoint.h
 math.h
 -
 
-../src/../include/cyTriMesh.h
-cyPoint.h
-../src/../include/cyPoint.h
-stdio.h
--
-ctype.h
--
-string.h
--
-vector
--
-
-../src/../include/objects.h
+../src/../include/materials.h
 scene.h
 ../src/../include/scene.h
-cyTriMesh.h
-../src/../include/cyTriMesh.h
-cyBVH.h
-../src/../include/cyBVH.h
 
 ../src/../include/photonmap.h
 
@@ -82,17 +68,23 @@ cyMatrix3.h
 cyColor.h
 ../src/../include/cyColor.h
 
-/home/yuedongz/RayTracer/RayTracer/src/main.cpp
-scene.h
-/home/yuedongz/RayTracer/RayTracer/src/scene.h
-objects.h
-/home/yuedongz/RayTracer/RayTracer/src/objects.h
+/home/yuedongz/RayTracer/RayTracer/src/Renderer.cpp
 Renderer.h
 /home/yuedongz/RayTracer/RayTracer/src/Renderer.h
-PhotonGenerator.h
-/home/yuedongz/RayTracer/RayTracer/src/PhotonGenerator.h
-time.h
--
 iostream
 -
+time.h
+-
+
+/home/yuedongz/RayTracer/RayTracer/src/materials.cpp
+materials.h
+/home/yuedongz/RayTracer/RayTracer/src/materials.h
+iostream
+-
+Math.h
+/home/yuedongz/RayTracer/RayTracer/src/Math.h
+PhotonGenerator.h
+/home/yuedongz/RayTracer/RayTracer/src/PhotonGenerator.h
+Tracer.h
+/home/yuedongz/RayTracer/RayTracer/src/Tracer.h
 

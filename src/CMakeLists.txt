@@ -1,6 +1,7 @@
 INCLUDE_DIRECTORIES(../include)
 SET(CMAKE_CXX_FLAGS "-pthread -std=c++11")
 SET(EXECUTABLE_OUTPUT_PATH "../bin")
+SET(CMAKE_BUILD_TYPE Debug)
 SET(SRC_LIST main.cpp
 	lights.cpp
 	Math.cpp

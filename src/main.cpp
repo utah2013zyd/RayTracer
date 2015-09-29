@@ -22,7 +22,7 @@ int main()
 {
 
 
-	if(LoadScene("../resources/scene2.xml"))
+	if(LoadScene("./scene.xml"))
 	{
 		//calculate render time
 		clock_t start, finish;
