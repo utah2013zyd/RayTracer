@@ -3,7 +3,7 @@
 #include "scene.h"
 #include "Tracer.h"
 #include <vector>
-
+#include <string>
 class PhotonGenerator
 {
 public:

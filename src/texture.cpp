@@ -10,6 +10,7 @@
 ///
 //-------------------------------------------------------------------------------
 
+#include "CImg.h"
 #include "texture.h"
 //#include "GL/glut.h"
 
@@ -60,14 +61,37 @@ bool TextureFile::Load()
 	data.clear();
 	width = 0;
 	height = 0;
-	FILE *fp = fopen(GetName(), "rb");
+	const char* fileName = GetName();
+	/*char format[4];
+	strncpy(format, fileName+strlen(fileName)-3, 3);
+	if(strcmp(format, "ppm") == 0) {
+
+	}
+	FILE *fp = fopen(fileName, "rb");
 	if (!fp) return false;
 
 	bool success = false;
 	success = LoadPPM(fp, width, height, data);
 
 	fclose(fp);
-	return success;
+*/
+	try{
+		cimg_library::CImg<float> tex(GetName());
+		width = tex.width();
+		height = tex.height();
+		data.resize(width*height);
+		for(int i = 0; i < height; i++) {
+			for(int j = 0; j < width; j++) {
+				data[i*width+j].r = tex(j, i, 0);
+				data[i*width+j].g = tex(j, i, 1);
+				data[i*width+j].b = tex(j, i, 2);
+			}	
+		}
+	}
+	catch(cimg_library::CImgIOException e) {
+		return false;
+	}
+	return true;
 }
 
 //-------------------------------------------------------------------------------

@@ -22,7 +22,7 @@ int main()
 {
 
 
-	if(LoadScene("./scene.xml"))
+	if(LoadScene("./sponza.xml"))
 	{
 		//calculate render time
 		clock_t start, finish;

@@ -60,7 +60,7 @@ void PhotonGenerator::buildPhoton(const int maxBounce)
 		//emit photon
 		Ray r;
 		Color photonIntensity;
-		float lightIndex = static_cast<float>(rand()) / static_cast<float>(RAND_MAX + 1)*PTotal;
+		float lightIndex = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1)*PTotal;
 		for (int i = 0; i < lightsRange.size()-1; i++)
 		{
 			if (lightIndex >= lightsRange[i] && lightIndex < lightsRange[i + 1])

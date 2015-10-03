@@ -75,6 +75,7 @@ src/CMakeFiles/RayTracer.dir/object.cpp.o: ../src/object.cpp
 src/CMakeFiles/RayTracer.dir/photonmap.cpp.o: ../src/../include/photonmap.h
 src/CMakeFiles/RayTracer.dir/photonmap.cpp.o: ../src/photonmap.cpp
 
+src/CMakeFiles/RayTracer.dir/texture.cpp.o: ../src/../include/CImg.h
 src/CMakeFiles/RayTracer.dir/texture.cpp.o: ../src/../include/cyColor.h
 src/CMakeFiles/RayTracer.dir/texture.cpp.o: ../src/../include/cyMatrix3.h
 src/CMakeFiles/RayTracer.dir/texture.cpp.o: ../src/../include/cyPoint.h
