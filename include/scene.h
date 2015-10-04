@@ -499,7 +499,7 @@ public:
 		void            SetObject(Object *object) { obj = object; }
 
 		// Material management
-		const Material* GetMaterial() const { return mtl; }
+		const Material* GetMaterial() const { if(mtl == NULL) printf("the material pointer is NULL"); return mtl; }
 		void            SetMaterial(Material *material) { mtl = material; }
 
 		// Transformations

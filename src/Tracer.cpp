@@ -38,9 +38,14 @@ bool Tracer::recursiveTraceRay(const Ray &ray, HitInfo &hInfo, const Node* node,
 			))
 		{
 			isHit = true;
-			if (h.z < hInfo.z){
-				hInfo = h;
-			}
+			hInfo.z = h.z;
+			hInfo.p = h.p;
+			hInfo.N = h.N;
+			hInfo.uvw = h.uvw;
+			//hInfo.duvw = h.duvw;
+			hInfo.node = h.node;
+			hInfo.front = h.front;
+			hInfo.mtlID = h.mtlID;
 		}
 	}
 	node->FromNodeCoords(hInfo);

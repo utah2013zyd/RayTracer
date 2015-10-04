@@ -54,6 +54,7 @@ public:
 		Map map_Ka;		///< Ambient texture map
 		Map map_Kd;		///< Diffuse texture map
 		Map map_Ks;		///< Specular texture map
+		Map map_bump;		///< bump texture map
 
 		cyMtl()
 		{
@@ -444,6 +445,7 @@ inline bool cyTriMesh::LoadFromFileObj(const char *filename, bool loadMtl)
 					else if (buffer.IsCommand("map_Ka")) buffer.Copy(m[mtlID].map_Ka.name, 256, 7);
 					else if (buffer.IsCommand("map_Kd")) buffer.Copy(m[mtlID].map_Kd.name, 256, 7);
 					else if (buffer.IsCommand("map_Ks")) buffer.Copy(m[mtlID].map_Ks.name, 256, 7);
+					else if (buffer.IsCommand("map_bump")) buffer.Copy(m[mtlID].map_bump.name, 256, 7);
 				}
 			}
 			fclose(fp);

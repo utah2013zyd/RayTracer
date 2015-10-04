@@ -79,6 +79,8 @@ void PhotonGenerator::buildPhoton(const int maxBounce)
 			HitInfo hit;
 			if (Tracer::traceRay(r, hit))
 			{
+				if(hit.node == NULL)
+					printf("node is NULL\n");
 				const Material* mat = hit.node->GetMaterial();
 				if (mat->IsPhotonSurface())
 				{

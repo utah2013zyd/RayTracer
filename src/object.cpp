@@ -165,6 +165,7 @@ bool TriObj::IntersectTriangle(const Ray &ray, HitInfo &hInfo, int hitSide, unsi
 	hInfo.p = p;
 	hInfo.z = t;
 	hInfo.N = GetNormal(faceID, cyPoint3f(w0, w1, w2));
+	hInfo.mtlID = GetMaterialIndex(faceID);
 	if (NVT() != 0)
 		hInfo.uvw = GetTexCoord(faceID, cyPoint3f(w0, w1, w2));
 	if (N.Dot(ray.dir) < 0)
