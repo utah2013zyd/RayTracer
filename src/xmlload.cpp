@@ -228,6 +228,7 @@ void LoadNode(Node *parent, TiXmlElement *element, int level)
 								m->SetRefractionIndex(mtl.Ni);
 								if (mtl.map_Kd.name[0] != '\0') m->SetDiffuseTexture(new TextureMap(ReadTexture(mtl.map_Kd.name)));
 								if (mtl.map_Ks.name[0] != '\0') m->SetDiffuseTexture(new TextureMap(ReadTexture(mtl.map_Ks.name)));
+								if(mtl.map_bump.name[0] != '\0') m->SetDiffuseTexture(new TextureMap(ReadTexture(mtl.map_bump.name)));
 								if (mtl.illum > 2 && mtl.illum <= 7) {
 									m->SetReflection(Color(mtl.Ks));
 									if (mtl.map_Ks.name[0] != '\0') m->SetReflectionTexture(new TextureMap(ReadTexture(mtl.map_Ks.name)));

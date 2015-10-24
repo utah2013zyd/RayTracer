@@ -40,12 +40,23 @@ public:
 
 	void SetDiffuseTexture(TextureMap *map)  { diffuse.SetTexture(map); }
 	void SetSpecularTexture(TextureMap *map)  { specular.SetTexture(map); }
+	void SetBumpTexture(TextureMap *map) {bump.SetTexture(map);}
 	void SetEmissionTexture(TextureMap *map)  { emission.SetTexture(map); }
 	void SetReflectionTexture(TextureMap *map)  { reflection.SetTexture(map); }
 	void SetRefractionTexture(TextureMap *map)  { refraction.SetTexture(map); }
 	void SetReflectionGlossiness(float gloss)   { reflectionGlossiness = gloss; }
 	void SetRefractionGlossiness(float gloss)   { refractionGlossiness = gloss; }
 
+	Point3 GetBumpNormal(const HitInfo &hInfo) const {
+		if(bump.GetTexture() == NULL) {
+			return Point3(0.0f, 0.0f, 1.0f);
+		}
+		else {
+			Color tmp = bump.Sample(hInfo.uvw);
+			tmp = tmp*2-1;
+			return Point3(tmp.r, tmp.g, tmp.b);
+		}
+	}
 	virtual void SetViewportMaterial(int subMtlID = 0) const{}   // used for OpenGL display
 
 	// Photon Extensions
@@ -53,7 +64,7 @@ public:
 	virtual bool RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const;  // if this method returns true, a new photon with the given direction and color will be traced
 
 private:
-	TexturedColor diffuse, specular, reflection, refraction, emission;
+	TexturedColor diffuse, specular, bump, reflection, refraction, emission;
 	float glossiness;
 	Color absorption;
 	float ior;  // index of refraction
@@ -75,7 +86,7 @@ public:
 	// Photon Extensions
 	virtual bool IsPhotonSurface() const { for (unsigned int i = 0; i<mtls.size(); i++) if (mtls[i]->IsPhotonSurface()) return true; return false; }
 	virtual bool RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const { return hInfo.mtlID<(int)mtls.size() ? mtls[hInfo.mtlID]->RandomPhotonBounce(r, c, hInfo) : false; }
-
+	Point3 GetBumpNormal(const HitInfo &hInfo) const {return hInfo.mtlID < (int)mtls.size() ? mtls[hInfo.mtlID]->GetBumpNormal(hInfo) : Point3(0.0f, 0.0f, 1.0f);}
 	void AppendMaterial(Material *m) { mtls.push_back(m); }
 
 private:

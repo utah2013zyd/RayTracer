@@ -76,6 +76,8 @@ protected:
 	cyTriFace		*fn;	///< normal faces
 	cyPoint3f		*vt;	///< texture vertices
 	cyTriFace		*ft;	///< texture faces
+	cyPoint3f		*tf;	///< face tangent
+	cyPoint3f		*btf;	///< face bi-tangent
 	cyMtl			*m;		///< materials
 	int				*mcfc;	///< material cumulative face count
 
@@ -89,7 +91,7 @@ protected:
 
 public:
 
-	cyTriMesh() : v(NULL), f(NULL), vn(NULL), fn(NULL), vt(NULL), ft(NULL), m(NULL), mcfc(NULL)
+	cyTriMesh() : v(NULL), f(NULL), vn(NULL), fn(NULL), vt(NULL), ft(NULL), tf(NULL), m(NULL), mcfc(NULL)
 		, nv(0), nf(0), nvn(0), nvt(0), nm(0), boundMin(0, 0, 0), boundMax(0, 0, 0) {}
 	virtual ~cyTriMesh() { Clear(); }
 
@@ -108,6 +110,8 @@ public:
 	const cyTriFace&	FT(int i) const	{ return ft[i]; }	///< returns the i^th texture face
 	cyMtl&				M(int i)		{ return m[i]; }	///< returns the i^th material
 	const cyMtl&		M(int i) const	{ return m[i]; }	///< returns the i^th material
+	const cyPoint3f&	TF(int i) const {return tf[i];}		///< return the i^th face tangent
+	const cyPoint3f&	BTF(int i) const {return btf[i];}	///< return the i^th face bitangent
 
 	unsigned int		NV() const		{ return nv; }		///< returns the number of vertices
 	unsigned int		NF() const		{ return nf; }		///< returns the number of faces
@@ -125,7 +129,8 @@ public:
 	void SetNumNormals(unsigned int n) { Allocate(n, vn, nvn); if (!fn) Allocate(nf, fn); }
 	void SetNumTexVerts(unsigned int n) { Allocate(n, vt, nvt); if (!ft) Allocate(nf, ft); }
 	void SetNumMtls(unsigned int n) { Allocate(n, m, nm); Allocate(n, mcfc); }
-
+	void SetTangents(unsigned int n) {Allocate(n, tf);}
+	void SetBitangents(unsigned int n) {Allocate(n, btf);}
 	///@name Get Property Methods
 	bool		IsBoundBoxReady() const { return boundMin.x != 0 && boundMin.y != 0 && boundMin.z != 0 && boundMax.x != 0 && boundMax.y != 0 && boundMax.z != 0; }
 	cyPoint3f	GetBoundMin() const { return boundMin; }		///< Returns the minimum values of the bounding box
@@ -140,7 +145,7 @@ public:
 	///@name Compute Methods
 	void ComputeBoundingBox();						///< Computes the bounding box
 	void ComputeNormals(bool clockwise = false);		///< Computes and stores vertex normals
-
+	void ComputeTangents();
 	///@name Load and Save methods
 	bool LoadFromFileObj(const char *filename, bool loadMtl = true);	///< Loads the mesh from an OBJ file. Automatically converts all faces to triangles.
 
@@ -187,6 +192,22 @@ inline void cyTriMesh::ComputeNormals(bool clockwise)
 		fn[i] = f[i];
 	}
 	for (unsigned int i = 0; i<nvn; i++) vn[i].Normalize();
+}
+
+inline void cyTriMesh::ComputeTangents() {
+	SetTangents(nf);
+	SetBitangents(nf);
+	for(unsigned int i = 0; i < nf; i++) {
+		//get 2 vertices position and texcoord
+		//calculate the tangent vector
+		cyPoint3f deltaPos1 = v[f[i].v[1]] - v[f[i].v[0]];
+		cyPoint3f deltaPos2 = v[f[i].v[2]] - v[f[i].v[0]];
+		cyPoint3f deltaUV1 = vt[f[i].v[1]] - vt[f[i].v[0]];
+		cyPoint3f deltaUV2 = vt[f[i].v[2]] - vt[f[i].v[0]];
+		float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y*deltaUV2.x);
+		tf[i] = (deltaPos1*deltaUV2.y - deltaPos2*deltaUV1.y)*r;
+		btf[i] = (deltaPos2*deltaUV1.x - deltaPos1*deltaUV2.x)*r;
+	}
 }
 
 inline bool cyTriMesh::LoadFromFileObj(const char *filename, bool loadMtl)

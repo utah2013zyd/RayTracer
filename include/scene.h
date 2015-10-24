@@ -151,6 +151,8 @@ struct HitInfo
 	float z;            // the distance from the ray center to the hit point
 	Point3 p;           // position of the hit point
 	Point3 N;           // surface normal at the hit point
+	Point3 T;	    // surface tangent at the hit point
+	Point3 B;
 	Point3 uvw;         // texture coordinate at the hit point
 	Point3 duvw[2];     // derivatives of the texture coordinate
 	const Node *node;   // the object node that was hit
@@ -312,6 +314,8 @@ public:
 		// Photon Extensions
 		virtual bool IsPhotonSurface() const { return true; }   // if this method returns true, the photon will be stored
 		virtual bool RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const { return false; } // if this method returns true, a new photon with the given direction and color will be traced
+		//return normal in bump map
+		virtual Point3 GetBumpNormal(const HitInfo &hInfo) const = 0;
 	};
 
 	class MaterialList : public ItemList<Material>
