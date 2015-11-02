@@ -22,9 +22,9 @@ private:
 
 private:
 	static const int threadNum = 16;
-	static const int bounceCount = 8;
-	static const int maxSampleCount = 64;
-	static const int minSampleCount = 16;
+	static const int bounceCount = 4;
+	static const int maxSampleCount = 8;
+	static const int minSampleCount = 2;
 	static const float threshold;
 	std::thread tRender;
 	std::thread tPixel[threadNum];

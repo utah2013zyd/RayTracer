@@ -55,6 +55,7 @@ public:
 		bvh.Clear();
 		if (!LoadFromFileObj(filename, loadMtl)) return false;
 		if (!HasNormals()) ComputeNormals();
+		ComputeTangents();
 		ComputeBoundingBox();
 		bvh.SetMesh(this, 4);
 		return true;

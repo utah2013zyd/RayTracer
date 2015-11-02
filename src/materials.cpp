@@ -71,6 +71,11 @@ Color MtlBlinn::directShade(const Ray &ray, const HitInfo &hInfo, const LightLis
 {
 	 Color result = Color(0.0, 0.0, 0.0);
 
+	 /*Point3 n = GetBumpNormal(hInfo);
+	 
+	 cyMatrix3f TBN;
+	 TBN.Set(hInfo.T, hInfo.B, hInfo.N);
+	 n = TBN*n;*/
 	 for (int i = 0; i < lights.size(); i++)
 	 {
 		 if (!lights[i]->IsAmbient())
@@ -79,7 +84,8 @@ Color MtlBlinn::directShade(const Ray &ray, const HitInfo &hInfo, const LightLis
 			 float LDotN = (-lights[i]->Direction(hInfo.p)).Dot(hInfo.N);
 			 // clamp l dot n
 			 LDotN = Math::clamp(LDotN, 0.0, 1.0);
-			 Color diffuseFactor = this->diffuse.Sample(hInfo.uvw) * LDotN;
+			 Color tmp = this->diffuse.Sample(hInfo.uvw);
+			 Color diffuseFactor =  tmp * LDotN;
 			 // calculate specular factor
 			 Point3 H = (-lights[i]->Direction(hInfo.p).GetNormalized() - ray.dir.GetNormalized()).GetNormalized();
 			 float HDotN = H.Dot(hInfo.N);

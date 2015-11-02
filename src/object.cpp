@@ -112,6 +112,8 @@ bool Plane::IntersectRay(const Ray &ray, HitInfo &hInfo, int hitSide) const
 	{
 		hInfo.p = p;
 		hInfo.N = Point3(0, 0, 1);
+		hInfo.T = Point3(0, 1, 0);
+		hInfo.B = Point3(1, 0, 0);
 		hInfo.z = t;
 		hInfo.uvw = Point3((p.x + 1) / 2, (p.y + 1) / 2, 0);
 		if (ray.dir.Dot(Point3(0, 0, 1)) < 0)

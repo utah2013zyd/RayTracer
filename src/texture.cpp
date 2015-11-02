@@ -76,15 +76,13 @@ bool TextureFile::Load()
 	fclose(fp);
 */
 	try{
-		cimg_library::CImg<float> tex(GetName());
+		cimg_library::CImg<unsigned char> tex(GetName());
 		width = tex.width();
 		height = tex.height();
 		data.resize(width*height);
 		for(int i = 0; i < height; i++) {
 			for(int j = 0; j < width; j++) {
-				data[i*width+j].r = tex(j, i, 0);
-				data[i*width+j].g = tex(j, i, 1);
-				data[i*width+j].b = tex(j, i, 2);
+				data[i*width+j].Set(tex(j, i, 0), tex(j, i, 1), tex(j, i, 2));
 			}	
 		}
 	}
@@ -98,7 +96,9 @@ bool TextureFile::Load()
 
 Color TextureFile::Sample(const Point3 &uvw) const
 {
-	if (width + height == 0) return Color(0, 0, 0);
+	if (width + height == 0){
+		 return Color(0, 0, 0);
+	}
 
 	Point3 u = TileClamp(uvw);
 	float x = width * u.x;
@@ -117,8 +117,7 @@ Color TextureFile::Sample(const Point3 &uvw) const
 	if (iy >= height) iy -= (iy / height)*height;
 	int iyp = iy + 1;
 	if (iyp >= height) iyp -= height;
-
-	return  data[iy *width + ix].ToColor() * ((1 - fx)*(1 - fy)) +
+	return data[iy *width + ix].ToColor() * ((1 - fx)*(1 - fy)) +
 		data[iy *width + ixp].ToColor() * (fx *(1 - fy)) +
 		data[iyp*width + ix].ToColor() * ((1 - fx)*   fy) +
 		data[iyp*width + ixp].ToColor() * (fx *   fy);

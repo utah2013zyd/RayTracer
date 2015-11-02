@@ -16,7 +16,7 @@
 #include "lights.h"
 #include "texture.h"
 #include "tinyxml.h"
-
+#include <iostream>
 //-------------------------------------------------------------------------------
 
 extern Node rootNode;
@@ -127,7 +127,6 @@ int LoadScene(const char *filename)
 	camera.up = (x ^ camera.dir).GetNormalized();
 
 	renderImage.Init(camera.imgWidth, camera.imgHeight);
-
 	return 1;
 }
 
@@ -376,6 +375,9 @@ void LoadMaterial(TiXmlElement *element)
 					ReadColor(child, c);
 					m->SetAbsorption(c);
 					printf("   absorption %f %f %f\n", c.r, c.g, c.b);
+				}
+				else if (COMPARE(child->Value(), "bump")) {
+					m->SetBumpTexture(ReadTexture(child));	
 				}
 			}
 		}

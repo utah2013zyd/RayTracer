@@ -22,13 +22,13 @@ int main()
 {
 
 
-	if(LoadScene("./sponza.xml"))
+	if(LoadScene("./scene3.xml"))
 	{
 		//calculate render time
 		clock_t start, finish;
 		double totalTime;
 		start = clock();
-
+		cout << "done here !" << endl;
 		photonGenerator.Init(100000);
 		photonGenerator.createMap();
 		theRenderer.render();
@@ -37,7 +37,7 @@ int main()
 		totalTime = (double)(finish - start)/CLOCKS_PER_SEC;
 		std::cout << totalTime<< std::endl;
 		std::cin.get();
-		renderImage.SaveImage("prj11_test.ppm");
+		renderImage.SaveImage("normalmapping_test.ppm");
 		//renderImage.ComputeZBufferImage();
 		//renderImage.SaveZImage("zbuffer_falloff.ppm");
 

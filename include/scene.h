@@ -315,6 +315,7 @@ public:
 		virtual bool IsPhotonSurface() const { return true; }   // if this method returns true, the photon will be stored
 		virtual bool RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const { return false; } // if this method returns true, a new photon with the given direction and color will be traced
 		//return normal in bump map
+		virtual bool hasBumpNormal(const HitInfo &hInfo) const = 0;
 		virtual Point3 GetBumpNormal(const HitInfo &hInfo) const = 0;
 	};
 

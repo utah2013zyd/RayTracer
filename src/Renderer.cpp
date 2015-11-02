@@ -62,8 +62,8 @@ void Renderer::renderPixel(Point3 S0, Point3 x, Point3 y, float h, float w)
 		int i, j;
 		i = index / renderImage.GetWidth();
 		j = index % renderImage.GetWidth();
-		//i = 279;
-		//j = 207;
+		//i = 250;
+		//j = 50;
 
 		if (i %100 == 0 && j == 0)
 			std::cout << i << " " << j << std::endl;
@@ -140,6 +140,7 @@ void Renderer::renderPixel(Point3 S0, Point3 x, Point3 y, float h, float w)
 			//	break;
 		}
 		Color pixelColor = sumColor / sampleCount;
+		//printf("final color: %f, %f, %f \n", pixelColor.r, pixelColor.g, pixelColor.b);
 
 		renderImage.GetPixels()[i*renderImage.GetWidth() + j] = Color(pow(pixelColor.r, 1/2.2), pow(pixelColor.g, 1/2.2), pow(pixelColor.b, 1/2.2));
 		renderImage.GetSampleCount()[i*renderImage.GetWidth() + j] = sampleCount;

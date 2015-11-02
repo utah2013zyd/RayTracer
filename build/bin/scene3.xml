@@ -30,6 +30,7 @@
         <translate x="15"/>
       </object>
     </object>
+<!--
     <object type="sphere" name="sphere1" material="mtl1">
       <scale value="6"/>
       <translate x="-5" y="10" z="6.5"/>
@@ -39,32 +40,30 @@
       <rotate angle="30" y="1"/>
       <translate x="7" y="-5" z="6.5"/>
     </object>
- 
+ -->
     <!-- Materials -->
     <material type="blinn" name="wall">
       <diffuse  r="1" g="1" b="1"/>
       <specular value="0"/>
     </material>
     <material type="blinn" name="wallRed">
-      <diffuse  r="1.0" g="0.5" b="0.5"/>
+      <diffuse  texture="154.jpg">
+      </diffuse>
       <specular value="0"/>
+      <bump texture="154_norm.jpg">
+      </bump> 
     </material>
     <material type="blinn" name="wallBlue">
       <diffuse  r="0.5" g="0.5" b="1.0"/>
       <specular value="0"/>
     </material>
     <material type="blinn" name="mtl1">
-      <diffuse  value = "0"/>
+      <diffuse  value = "1.0"/>
       <specular value = "1.0"/>
-      <glossiness value="80"/>
-      <reflection value="0.7" glossiness="0.2"/>
     </material>
     <material type="blinn" name="mtl2">
-      <diffuse  value = "0"/>
+      <diffuse  value = "1.0"/>
       <specular value = "1.0"/>
-      <glossiness value="80"/>
-      <refraction value="1.0" index="1.52" glossiness="0.05"/>
-
     </material>
  
     <!-- Lights -->

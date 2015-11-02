@@ -91,7 +91,7 @@ protected:
 
 public:
 
-	cyTriMesh() : v(NULL), f(NULL), vn(NULL), fn(NULL), vt(NULL), ft(NULL), tf(NULL), m(NULL), mcfc(NULL)
+	cyTriMesh() : v(NULL), f(NULL), vn(NULL), fn(NULL), vt(NULL), ft(NULL), tf(NULL), btf(NULL), m(NULL), mcfc(NULL)
 		, nv(0), nf(0), nvn(0), nvt(0), nm(0), boundMin(0, 0, 0), boundMax(0, 0, 0) {}
 	virtual ~cyTriMesh() { Clear(); }
 
@@ -197,6 +197,7 @@ inline void cyTriMesh::ComputeNormals(bool clockwise)
 inline void cyTriMesh::ComputeTangents() {
 	SetTangents(nf);
 	SetBitangents(nf);
+	printf("done here!");
 	for(unsigned int i = 0; i < nf; i++) {
 		//get 2 vertices position and texcoord
 		//calculate the tangent vector

@@ -20,7 +20,7 @@
 class MtlBlinn : public Material
 {
 public:
-	MtlBlinn() : diffuse(0.5f, 0.5f, 0.5f), specular(0.7f, 0.7f, 0.7f), glossiness(20.0f), emission(0, 0, 0),
+	MtlBlinn() : diffuse(0.5f, 0.5f, 0.5f),bump(1.0f, 1.0f, 1.0f), specular(0.7f, 0.7f, 0.7f), glossiness(20.0f), emission(0, 0, 0),
 		reflection(0, 0, 0), refraction(0, 0, 0), absorption(0, 0, 0), ior(1), viewportTextureID(0),
 		reflectionGlossiness(0), refractionGlossiness(0) {}
 	virtual Color Shade(const Ray &ray, const HitInfo &hInfo, const LightList &lights, int bounceCount) const;
@@ -47,15 +47,10 @@ public:
 	void SetReflectionGlossiness(float gloss)   { reflectionGlossiness = gloss; }
 	void SetRefractionGlossiness(float gloss)   { refractionGlossiness = gloss; }
 
+	bool hasBumpNormal(const HitInfo &hInfo) const { return bump.GetTexture() != NULL; }
 	Point3 GetBumpNormal(const HitInfo &hInfo) const {
-		if(bump.GetTexture() == NULL) {
-			return Point3(0.0f, 0.0f, 1.0f);
-		}
-		else {
-			Color tmp = bump.Sample(hInfo.uvw);
-			tmp = tmp*2-1;
-			return Point3(tmp.r, tmp.g, tmp.b);
-		}
+		Color tmp = bump.Sample(hInfo.uvw)*2-1;
+		return Point3(tmp.r, tmp.g, tmp.b);
 	}
 	virtual void SetViewportMaterial(int subMtlID = 0) const{}   // used for OpenGL display
 
@@ -86,6 +81,7 @@ public:
 	// Photon Extensions
 	virtual bool IsPhotonSurface() const { for (unsigned int i = 0; i<mtls.size(); i++) if (mtls[i]->IsPhotonSurface()) return true; return false; }
 	virtual bool RandomPhotonBounce(Ray &r, Color &c, const HitInfo &hInfo) const { return hInfo.mtlID<(int)mtls.size() ? mtls[hInfo.mtlID]->RandomPhotonBounce(r, c, hInfo) : false; }
+	bool hasBumpNormal(const HitInfo &hInfo) const { return hInfo.mtlID < (int)mtls.size() ? mtls[hInfo.mtlID]->hasBumpNormal(hInfo) : false; }
 	Point3 GetBumpNormal(const HitInfo &hInfo) const {return hInfo.mtlID < (int)mtls.size() ? mtls[hInfo.mtlID]->GetBumpNormal(hInfo) : Point3(0.0f, 0.0f, 1.0f);}
 	void AppendMaterial(Material *m) { mtls.push_back(m); }
 
